@@ -290,3 +290,4 @@ C:\Users\umais\Desktop\MyApi\obj\Debug\net8.0\refint\MyApi.dll
 C:\Users\umais\Desktop\MyApi\obj\Debug\net8.0\MyApi.pdb
 C:\Users\umais\Desktop\MyApi\obj\Debug\net8.0\MyApi.genruntimeconfig.cache
 C:\Users\umais\Desktop\MyApi\obj\Debug\net8.0\ref\MyApi.dll
+C:\Users\umais\Desktop\MyApi\obj\Debug\net8.0\MyApi.sourcelink.json
