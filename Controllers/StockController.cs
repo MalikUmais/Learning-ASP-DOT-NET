@@ -28,8 +28,8 @@ namespace MyApi.Controllers
             var stocks = await _stockRepo.GetAllAsync();
 
             var stockDto= stocks.Select(s => s.ToStockDto());
-            // return Ok(stocks);
-            return Ok(stockDto);
+            return Ok(stocks);
+            // return Ok(stockDto);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)

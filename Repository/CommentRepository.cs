@@ -20,5 +20,10 @@ namespace MyApi.Repository
         {
             return await _context.Comments.ToListAsync();
         }
+
+        public Task<Comment?> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
