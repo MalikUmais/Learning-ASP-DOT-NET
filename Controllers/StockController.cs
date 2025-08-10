@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyApi.Data;
@@ -24,13 +25,14 @@ namespace MyApi.Controllers
             _context = context;
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var stocks = await _stockRepo.GetAllAsync(query);
 
-            var stockDto= stocks.Select(s => s.ToStockDto());
+            var stockDto = stocks.Select(s => s.ToStockDto());
             return Ok(stocks);
             // return Ok(stockDto);
         }
