@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyApi.Dtos.Comment;
 using MyApi.Extensions;
+using MyApi.Helpers;
 using MyApi.Interfaces;
 using MyApi.Mappers;
 using MyApi.Models;
@@ -28,11 +30,12 @@ namespace MyApi.Controllers
             _fmpService = fmpService;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [Authorize]
+        public async Task<IActionResult> GetAll([FromQuery] CommentQueryObject queryObject)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var comments = await _commentRepo.GetAllAsync();
+            var comments = await _commentRepo.GetAllAsync(queryObject);
             var commentDto = comments.Select(s => s.ToCommentDto());
             return Ok(commentDto);
         }
